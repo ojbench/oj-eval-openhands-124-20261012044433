@@ -1,24 +1,24 @@
 #include <cstdio>
-#include <vector>
-#include <algorithm>
-using namespace std;
 
 int main() {
     int x, k, p;
     scanf("%d %d %d", &x, &k, &p);
     
     // Initialize available seats for each segment (station i to i+1)
-    vector<int> available(x + 1, k);
+    static int available[1000005];
+    for (int i = 1; i <= x; i++) {
+        available[i] = k;
+    }
     
     for (int i = 0; i < p; i++) {
         int u, v, n;
         scanf("%d %d %d", &u, &v, &n);
         
         // Check if all segments from u to v-1 have at least n available seats
-        bool can_fulfill = true;
+        int can_fulfill = 1;
         for (int j = u; j < v; j++) {
             if (available[j] < n) {
-                can_fulfill = false;
+                can_fulfill = 0;
                 break;
             }
         }
