@@ -1,12 +1,14 @@
 #include <stdio.h>
-#include <stdlib.h>
+
+#define MAX_STATIONS 1000005
+
+int available[MAX_STATIONS];
 
 int main() {
     int x, k, p;
     scanf("%d %d %d", &x, &k, &p);
     
     // Initialize available seats for each segment (station i to i+1)
-    int *available = (int*)malloc((x + 1) * sizeof(int));
     for (int i = 1; i <= x; i++) {
         available[i] = k;
     }
@@ -35,6 +37,5 @@ int main() {
         }
     }
     
-    free(available);
     return 0;
 }
